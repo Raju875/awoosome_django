@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block custom_css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block title %}
+    List
+{% endblock %}
+
+{% block content %}
+{% autoescape on %}
+{{ msg }}
+<div class="row">
+    <div class="col-md-4">
+        <table class="table">
+        <h3>Session Keys</h3>
+            <tr>
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Key</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if perms.session_cookie_cache %}
+                        {% for key in request.session.keys %}
+                        <tr>
+                            <td>{{key}}</td>
+                            <td>
+                                {% if perms.session_cookie_cache.view_sessioncookiecache %}
+                                    <a href="{% url 'session_cookie_cache:details' key %}">Details</a>
+                                    {% endif %}
+
+                                {% if perms.session_cookie_cache.delete_sessioncookiecache %}
+                                    <a href="{% url 'session_cookie_cache:delete' key %}">Delete</a>
+                                    {% endif %}
+                            </td>
+                        </tr>
+                            {% empty %}
+                                <tr>
+                                    <td colspan="2">Sorry, no athletes in this list.</td>
+                                </tr>
+                            {% endfor %}
+                        
+                            {% else%}
+                                <tr>
+                                    <td colspan="2">Sorry, You have no permission toview this listl.</td>
+                                </tr>
+                        {% endif %}
+                </tbody>
+        </table>
+    </div>
+    <div class="col-md-8">
+        <table class="table">
+        <h3>Session Keys & Values</h3>
+        <tr>
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Key</th>
+                    <th scope="col">Item</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key, item in request.session.items %}
+                <tr>
+                    <td>{{key}}</td>
+                    <td>{{item}}</td>
+                </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="2">Sorry, no athletes in this list.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% if perms.session_cookie_cache.add_sessioncookiecache %}
+    <a href="{% url 'session_cookie_cache:set' %}">Set</a>
+    {% endif %}
+
+{% if perms.session_cookie_cache.delete_sessioncookiecache %}
+    {% if request.session.keys %}
+        <form method="post">
+            {% csrf_token %}
+        <a href="{% url 'session_cookie_cache:flus_delete' %}">Flus</a>
+        </form>
+        {% endif %}
+    {% endif %}
+{% endautoescape %}
+{% endblock %}

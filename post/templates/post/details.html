@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% load static %}
+{% load custom_tags %}
+{% load i18n %}
+{% load l10n %}
+
+{% block custom_css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block title %}
+    Details
+{% endblock %}
+
+{% block content %}
+{% autoescape on %}
+    <span>Name: {{post_data.name|slugify}} </span><br>
+    Email: {% trans post_data.email %} <br>
+    Phone: {{post_data.phone|localize}} <br>
+    Message: {{post_data.message|lower|truncatechars:20}} <br>
+    Created By: {{post_data.created_by}} <br>
+    Updated By: {{post_data.updated_by}} <br>
+    Last modify: {{post_data.updated_at|naturaltime}} <br>
+    Photo: {% if post_data.photo %} <img style="width: 100px;" src="{{post_data.photo.url}}" alt="photo"> {% endif %} <br>
+    Like: {{ no_of_likes }} Dislike: {{ no_of_dislikes }} Views: {{ no_of_views }} <br>
+
+    <form action="{{ post_data.get_like_dislike_url }}" method="POST">
+        {% csrf_token %}
+        {% if is_liked and not is_disliked %}
+            <button type="submit" name="like_dislike" value="like" class="btn btn-success">Like</button>
+            <button type="submit" name="like_dislike" value="dislike" class="btn btn-secondary">Dislike</button>
+        {% elif not is_liked and is_disliked %}
+            <button type="submit" name="like_dislike" value="like" class="btn btn-secondary">Like</button>
+            <button type="submit" name="like_dislike" value="dislike" class="btn btn-danger">Dislike</button>
+        {% else %}
+            <button type="submit" name="like_dislike" value="like" class="btn btn-secondary">Like</button>
+            <button type="submit" name="like_dislike" value="dislike" class="btn btn-secondary">Dislike</button>
+        {% endif %}
+    </form>
+   
+
+    <br>
+    <!-- <span>Custom content</span> <br>
+    Custom Replace Email: {{post.email|rep_gmail:'Gmail'}} <br>
+    Note: {{post.model_note}} <br> -->
+    Actions: 
+    {% if perms.post.change_posts %}
+        <a href="{{ post_data.get_update_url }}">{% trans "Edit" %}</a>
+        {% endif %}
+    {% if perms.post.delete_posts %}
+        <a href="{{ post_data.get_delete_url }}">{% trans "Delete" %}</a>
+        {% endif %}
+    {% if perms.post.view_posts %}
+        <a href="{{ post_data.get_list_url }}">{% trans "List" %}</a>
+        {% endif %}
+    
+    <hr>
+    <h4>Add Comment</h4>
+        <form action="{% url 'post:comment' %}" method="POST" id="main_form">
+            {% csrf_token %}
+            <input type="hidden" name="post_id" value="{{post_data.id}}">
+            <input type="hidden" name="parent" value="">
+            <div class="row">
+                <div class="col">
+                    <input type="text" name="content" placeholder="Write your comment" class="form=control">
+                    <button type="submit" name="add_comment" class="btn btn-info">Add</button>
+                </div>
+            </div>
+        </form>
+        <hr>
+        
+        {% for comment in comments %}
+            <div class="row">
+                <div class="col">
+                    <b>({{comment.id}}) {{ comment.user }}</b>
+                    <span class="badge bagde-secondary">{{ comment.updated_at }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">{{comment.content}}</div>
+            </div>
+
+            <form action="{% url 'post:comment' %}" method="POST" id="main_form">
+                {% csrf_token %}
+                <input type="hidden" name="post_id" value="{{post_data.id}}">
+                <input type="hidden" name="parent" value="{{comment.id}}">
+                <div class="row">
+                    <div class="col">
+                        <input type="text" name="content" placeholder="Write your comment" class="form=control">
+                        <button type="submit" name="add_comment" class="btn btn-info">Reply</button>
+                    </div>
+                </div>
+            </form>
+            <br>
+
+            {% for reply in replies|get_reply:comment.id %}
+                <div class="row">
+                    <div class="col">
+                        <b>( {{comment.id}} -R){{ reply.user }}</b>
+                        <span class="badge bagde-secondary">{{ reply.updated_at }}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">{{reply.content}}</div>
+                </div>
+                
+                <form action="{% url 'post:comment' %}" method="POST" id="main_form">
+                    {% csrf_token %}
+                    <input type="hidden" name="post_id" value="{{post_data.id}}">
+                    <input type="hidden" name="parent" value="{{reply.id}}">
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" name="content" placeholder="Write your comment" class="form=control">
+                            <button type="submit" name="add_comment" class="btn btn-info">Add Reply</button>
+                        </div>
+                    </div>
+                </form>
+                <br>
+            {% endfor %}
+        {% empty %}
+            {% trans "No comment yet." %}
+        {% endfor %}
+
+{% endautoescape %}
+{% endblock %}

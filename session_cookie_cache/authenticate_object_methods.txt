@@ -1,0 +1,22 @@
+------ User Object Fields
+is_authenticated()
+is_anonymous()
+get_username()
+get_full_name()
+get_short_name() - It returns first name
+set_password(raw_password)
+set_unused_password() - if raw password is None
+check_password(raw_password)
+has_usable_password()
+get_user_permissions(obj=None)
+get_group_permissions(obj=None)
+get_all_permissions(obj=None) - both user and group
+has_perm(perm, obj=None) - always True for active & superuser, always False for inavtive user
+has_perms(perm_list, obj=None) - always True for active & superuser, always False for inavtive user
+has_module_perms(package_name) - always True for active & superuser, always False for inavtive user
+email_user(subject, message, from_email=None, **kwargs)
+
+----- User Manager Methods
+create_user(username, email=None, password=None, **extra_fields)
+create_superuser(username, email=None, password=None, **extra_fields) - set is_staff & is_superuser True
+with_perms(perm, is_active=True, include_superusers=True, backend=None, obj=None)

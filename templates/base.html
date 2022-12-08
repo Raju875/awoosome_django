@@ -1,0 +1,108 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% block meta_tags %}{% endblock %}
+    <title>
+        {% block title %}{% endblock %}
+    </title>
+
+    {% block css %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    {% endblock %}
+
+    {% block custom_css %}
+    {% endblock %}
+
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+        window.OneSignal = window.OneSignal || [];
+        OneSignal.push(function () {
+            OneSignal.init({
+                appId: "ff1897be-9366-42ef-862f-5aedf57265d1",
+                allowLocalhostAsSecureOrigin: true,
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <!-- {% block navbar %} -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            {% if perms.post %}
+            <a class="navbar-brand" href="{% url 'post:list' %}">Post</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    aria-controls= aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            {% endif %}
+
+            {% if perms.session_cookie_cache %}
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'session_cookie_cache:list' %}">Session</a>
+                    </li>
+                </ul>
+            </div>
+            {% endif %}
+
+            <div class="collapse navbar-collapse">
+                  <img style="width: 50px;" src="{% static 'images/django.png' %}" alt="Django">
+            </div>
+            <div>
+                {% if user.is_authenticated %}
+                    Hi {{ user.username }}!
+                    <a href="{% url 'users:logout' %}"><button>Log Out</button></a><
+                    <a href="{% url 'users:password_change' %}"><button>Change Password</button></a>
+                    <a href="{% url 'users:profile' %}"><button>{{user.username}}</button></a>
+                {% else %}
+                <a href="{% url 'users:signup' %}"><button>Sign Up</button></a>
+                <a href="{% url 'users:login' %}"><button>Login</button></a>
+                <a href="{% url 'users:password_reset' %}"><button>Reset Password</button></a>
+                {% endif %}
+            </div>
+            
+            {% get_available_languages as languages %}
+            <label for="">Lang
+                <select id="language">
+                    {% for lang_code, lang_name in languages %}
+                    {% language lang_code %}
+                    <option>
+                        <a href="{{lang_code}}">{{ lang_name }}-{{lang_code}}</a>
+                    </option>
+                    {% endlanguage %}
+                    {% endfor %}
+                </select>
+            </label>
+
+        </div>
+    </nav>
+    <!-- {% endblock %} -->
+
+    <div class="container mt-4">
+        
+        {% include "message.html" %}
+
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    {% block js %}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    </body>
+    {% endblock %}
+
+    <!-- {% block custom_js %}
+    {% endblock %}
+</body>
+
+</html>

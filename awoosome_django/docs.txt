@@ -1,0 +1,8 @@
+1. define the environment variable DJANGO_SETTINGS_MODULE
+	set DJANGO_SETTINGS_MODULE=awoosome_django.settings.development
+	PYTHON SHELL
+	import django
+	django.setup()
+--------- from post.models import Posts
+----------from django.contrib.auth import get_user_model
+----------U=get_user_model()

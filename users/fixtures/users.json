@@ -1,0 +1,98 @@
+[
+    {
+        "model": "users.CustomUser",
+        "pk": 1,
+        "fields": {
+            "email": "admin1@gmail.com",
+            "username": "admin1",
+            "name": "Admin1",
+            "password": "pbkdf2_sha256$390000$Pih2HClArN10cb9TeYrpG9$U75zXbYJSrxyQ0iL+/dAlClfG7Oew3NpjQPY+p3R6ro=",
+            "address": "Admin1 address",
+            "phone": "012345",
+            "is_admin": "False",
+            "is_active": "True",
+            "is_staff": "True",
+            "is_superuser": "True"
+        }
+    },
+    {
+        "model": "users.CustomUser",
+        "pk": 2,
+        "fields": {
+            "email": "admin2@gmail.com",
+            "username": "admin2",
+            "name": "Admin2",
+            "password": "pbkdf2_sha256$390000$Pih2HClArN10cb9TeYrpG9$U75zXbYJSrxyQ0iL+/dAlClfG7Oew3NpjQPY+p3R6ro=",
+            "address": "Admin2 address",
+            "phone": "012345",
+            "is_admin": "False",
+            "is_active": "True",
+            "is_staff": "True",
+            "is_superuser": "True"
+        }
+    },
+    {
+        "model": "users.CustomUser",
+        "pk": 3,
+        "fields": {
+            "email": "test1@gmail.com",
+            "username": "test1",
+            "name": "Test1",
+            "password": "pbkdf2_sha256$390000$Pih2HClArN10cb9TeYrpG9$U75zXbYJSrxyQ0iL+/dAlClfG7Oew3NpjQPY+p3R6ro=",
+            "address": "Test1 address",
+            "phone": "012345",
+            "is_admin": "False",
+            "is_active": "True",
+            "is_staff": "True",
+            "is_superuser": "False"
+        }
+    },
+    {
+        "model": "users.CustomUser",
+        "pk": 4,
+        "fields": {
+            "email": "test2@gmail.com",
+            "username": "test2",
+            "name": "Test2",
+            "password": "pbkdf2_sha256$390000$Pih2HClArN10cb9TeYrpG9$U75zXbYJSrxyQ0iL+/dAlClfG7Oew3NpjQPY+p3R6ro=",
+            "address": "Test2 address",
+            "phone": "012345",
+            "is_admin": "False",
+            "is_active": "True",
+            "is_staff": "True",
+            "is_superuser": "False"
+        }
+    },
+    {
+        "model": "users.CustomUser",
+        "pk": 5,
+        "fields": {
+            "email": "test3@gmail.com",
+            "username": "test3",
+            "name": "Test3",
+            "password": "pbkdf2_sha256$390000$Pih2HClArN10cb9TeYrpG9$U75zXbYJSrxyQ0iL+/dAlClfG7Oew3NpjQPY+p3R6ro=",
+            "address": "Test3 address",
+            "phone": "012345",
+            "is_admin": "False",
+            "is_active": "True",
+            "is_staff": "True",
+            "is_superuser": "False"
+        }
+    },
+    {
+        "model": "users.CustomUser",
+        "pk": 6,
+        "fields": {
+            "email": "test4@gmail.com",
+            "username": "test4",
+            "name": "Test4",
+            "password": "pbkdf2_sha256$390000$Pih2HClArN10cb9TeYrpG9$U75zXbYJSrxyQ0iL+/dAlClfG7Oew3NpjQPY+p3R6ro=",
+            "address": "Test4 address",
+            "phone": "012345",
+            "is_admin": "False",
+            "is_active": "True",
+            "is_staff": "True",
+            "is_superuser": "False"
+        }
+    }
+]

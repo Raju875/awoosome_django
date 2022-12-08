@@ -1,0 +1,1 @@
+print('i am init file in post package')

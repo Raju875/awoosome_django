@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load i18n %}
+<!-- {% load widget_tweaks %} -->
+
+{% block title %}
+    {{page_title}}
+{% endblock %}
+
+{% block content %}
+    {% comment "Test comment block" %}
+        {{'page_title'}}
+    {% endcomment %}
+    User: {{user.get_username}}
+    {% if perms.post.add_posts %}
+        <a href="{% url 'post:add' %}">{% trans "Add" %}</a> <br>
+        {% endif %}
+    <hr>
+    {% for details in posts %}
+    <!-- <li style='background-color:{% cycle ' lightblue' 'pink' 'yellow' 'coral' 'grey' %}'> -->
+        {{forloop.counter0}} {{details.name|capfirst}}
+            {% if perms.post.view_posts %} 
+                <a href="{{ details.get_absolute_url }}">{% trans "Details" %}</a>
+                {% endif %}
+            {% if perms.post.change_posts and request.user.id == details.user_id %} 
+                <a href="{{ details.get_update_url }}">{% trans "Edit" %}</a>
+                {% endif %}
+            {% if perms.post.delete_posts and request.user.id == details.user_id %}
+                <a href="{{ details.get_delete_url }}">{% trans "Delete" %}</a>
+                {% endif %}
+            <br>
+    {% empty %}
+        {% trans "Sorry, no athletes in this list." %}
+    {% endfor %}
+    {% if is_paginated %}
+        {% include "pagination.html" with include_pass='Test pass vaeriable from child class' %}
+    {% endif %}
+    
+    <hr>
+    {% trans "Permissions" %}: {% if perms.post %} {{ perms.post }} {% else %} 'No permission set' {% endif %}<br>
+
+{% endblock %}

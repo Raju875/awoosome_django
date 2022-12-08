@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block custom_css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block title %}
+    Details
+{% endblock %}
+
+{% block content %}
+{% autoescape on %}
+    {{ msg }}<br>
+    <span>Session Key: {{session_key|slugify}}</span> <br>
+    <span>Session Value: {{get_session_by_key|slugify}}</span> <br>
+    <span>Cookie age: {{request.session.get_session_cookie_age}}</span> <br>
+    <span>Session expire: {{request.session.get_expiry_age}}</span> <br>
+    <span>Session expire date: {{request.session.get_expiry_date}}</span> <br>
+    <span>Session browser close: {{request.session.get_expire_at_browser_close}}</span> <br>
+    <span>Session cycle key: {{request.session.cycle_key}}</span> <br><br>
+    <hr>
+    <span>Permissions:</span><br>
+        {{perms.enroll}}
+    <br><br>
+    {% if perms.session_cookie_cache.view_sessioncookiecache %}
+        <a href="{% url 'session_cookie_cache:list' %}">List</a>
+        {% endif %}
+{% endautoescape %}
+{% endblock %}
