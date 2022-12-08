@@ -1,0 +1,21 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pillow = "*"
+django-environ = "*"
+docutils = "*"
+reportlab = "*"
+djangorestframework = "*"
+djangorestframework-simplejwt = "*"
+django-debug-toolbar = "*"
+django-extensions = "*"
+werkzeug = "*"
+pyopenssl = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"

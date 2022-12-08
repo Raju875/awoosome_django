@@ -1,0 +1,212 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-12 01:18+0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\awoosome_django\settings.py:165
+msgid "English"
+msgstr ""
+
+#: .\awoosome_django\settings.py:166
+msgid "French"
+msgstr ""
+
+#: .\awoosome_django\settings.py:167
+msgid "Spanish"
+msgstr ""
+
+#: .\post\admin.py:49
+#, python-format
+msgid "%d row updated successfully."
+msgid_plural "%d rows updated successfully."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\post\admin.py:69
+msgid "Phone filter"
+msgstr ""
+
+#: .\post\admin.py:75
+msgid "has phone"
+msgstr ""
+
+#: .\post\admin.py:76
+msgid "no phone"
+msgstr ""
+
+#: .\post\forms.py:27 .\post\models.py:60
+msgid "Reserved name!"
+msgstr ""
+
+#: .\post\forms.py:29 .\post\models.py:62
+msgid "Reserved email address!."
+msgstr ""
+
+#: .\post\templates\post\delete.html:13
+msgid "Cancel"
+msgstr ""
+
+#: .\post\templates\post\details.html:33 .\post\templates\post\list.html:25
+msgid "Edit"
+msgstr ""
+
+#: .\post\templates\post\details.html:36 .\post\templates\post\list.html:28
+msgid "Delete"
+msgstr ""
+
+#: .\post\templates\post\details.html:39
+msgid "List"
+msgstr ""
+
+#: .\post\templates\post\list.html:15
+msgid "Add"
+msgstr ""
+
+#: .\post\templates\post\list.html:22
+msgid "Details"
+msgstr ""
+
+#: .\post\templates\post\list.html:32
+msgid "Sorry, no athletes in this list."
+msgstr ""
+
+#: .\post\templates\post\list.html:39 .\users\admin.py:100
+#: .\users\admin.py:111
+msgid "Permissions"
+msgstr ""
+
+#: .\post\views.py:201
+msgid "Info: Data load successfully"
+msgstr ""
+
+#: .\post\views.py:202
+msgid "Success: Data load successfully"
+msgstr ""
+
+#: .\post\views.py:203
+msgid "Warning: Data load successfully"
+msgstr ""
+
+#: .\post\views.py:204
+msgid "Error: Data load successfully"
+msgstr ""
+
+#: .\post\views.py:205
+msgid "Debug: Data load successfully"
+msgstr ""
+
+#: .\templates\admin\post\post_filter_list.html:34
+msgid "Home"
+msgstr ""
+
+#: .\templates\admin\post\post_filter_list.html:54
+msgid "Please correct the error below."
+msgstr ""
+
+#: .\templates\admin\post\post_filter_list.html:81
+msgid "Filter"
+msgstr ""
+
+#: .\templates\admin\post\post_filter_list.html:83
+msgid "Clear all filters"
+msgstr ""
+
+#: .\users\admin.py:98 .\users\admin.py:109
+msgid "Personal info"
+msgstr ""
+
+#: .\users\admin.py:103 .\users\admin.py:114
+msgid "Important dates"
+msgstr ""
+
+#: .\users\managers.py:10
+msgid "The Username must be set"
+msgstr ""
+
+#: .\users\managers.py:12
+msgid "The Email must be set"
+msgstr ""
+
+#: .\users\managers.py:14
+msgid "The Password must be set"
+msgstr ""
+
+#: .\users\managers.py:29
+msgid "Superuser must have is_staff=True."
+msgstr ""
+
+#: .\users\managers.py:31
+msgid "Superuser must have is_superuser=True."
+msgstr ""
+
+#: .\users\models.py:31
+msgid "Email"
+msgstr ""
+
+#: .\users\models.py:40
+msgid "last login"
+msgstr ""
+
+#: .\users\models.py:41
+msgid "date joined"
+msgstr ""
+
+#: .\users\templates\users\login.html:11
+msgid "Login"
+msgstr ""
+
+#: .\users\templates\users\profile.html:9
+msgid "Language in:"
+msgstr ""
+
+#: .\users\templates\users\profile.html:32
+msgid "User Profile"
+msgstr ""
+
+#: .\users\templates\users\signup.html:11
+msgid "Sign Up"
+msgstr ""
+
+#: .\users\views.py:54
+msgid "Password change"
+msgstr ""
+
+#: .\users\views.py:59 .\users\views.py:73
+msgid "Password reset sent"
+msgstr ""
+
+#: .\users\views.py:68
+msgid "Password reset"
+msgstr ""
+
+#: .\users\views.py:82
+msgid "Enter new password"
+msgstr ""
+
+#: .\users\views.py:87
+msgid "Password reset complete"
+msgstr ""
+
+#: .\utils\image.py:18
+msgid "{file_type} file not supported. Please upload image, pdf or doc file"
+msgstr ""
+
+#: .\utils\image.py:25
+msgid ""
+"Please keep filesize under {MAX_UPLOAD_SIZE}MB. Current filesize {file_size}"
+"MB"
+msgstr ""

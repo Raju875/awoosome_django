@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+
+{% get_available_languages as languages %}
+{% translate "Language in:" %}
+{% for lang_code, lang_name in languages %}
+    {% language lang_code %}
+        <a href="{% url 'users:profile'  %}">{{ lang_name }}</a>
+    {% endlanguage %}
+{% endfor %}
+
+
+{% get_current_language as LANGUAGE_CODE %}
+{% get_current_language_bidi as LANGUAGE_BIDI %}
+
+<p>Language Code: {{LANGUAGE_CODE}}</p><br>
+<p>Language BIDI: {{LANGUAGE_BIDI}}</p><br>
+
+{% get_language_info for LANGUAGE_CODE as lang %}
+{% get_language_info for "zh-hans" as lang %}
+Language code: {{ lang.code }}<br>
+Name of language: {{ lang.name_local }}<br>
+Name in English: {{ lang.name }}<br>
+Bi-directional: {{ lang.bidi }}
+Name in the active language: {{ lang.name_translated }}
+
+
+<h2>{% trans "User Profile" %}</h2>
+<form action="{% url 'users:profile' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update</button>
+</form>
+{% endblock %}

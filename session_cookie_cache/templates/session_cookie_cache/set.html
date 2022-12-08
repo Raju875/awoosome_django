@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block custom_css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block title %}
+Details
+{% endblock %}
+
+{% block content %}
+{% autoescape on %}
+    {{ msg }}
+Message: {{ request.session.my_user }} <br>
+<span>Auth Username: {{request.user.username|slugify}}</span>  <br>
+<span>Auth Username: {{request.session.my_user1|slugify}}</span>  <br>
+<span>Auth Username: {{request.session.my_user|slugify}}</span>  <br>
+<span>Session Username: {{request.session.auth_username|slugify}}</span>  <br>
+<a href="{% url 'session_cookie_cache:list' %}">List</a>
+{% endautoescape %}
+{% endblock %}

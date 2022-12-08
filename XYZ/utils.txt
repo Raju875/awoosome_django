@@ -1,0 +1,7 @@
+
+------ define the environment variable DJANGO_SETTINGS_MODULE or call settings.configure() before accessing settings------
+import os
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "awoosome_django.settings")
+import django
+django.setup()
+from django.core.management import call_command
