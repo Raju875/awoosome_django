@@ -1,2 +1,2 @@
 # awoosome_django
-Django project add multiple features
+Django project with multiple features
