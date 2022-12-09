@@ -197,8 +197,6 @@ MESSAGE_TAGS = {
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-# MIDDLEWARE += ['whitenoise.middleware.WhiteNoiseMiddleware'] # for production
-
 # user access this url/directory
 STATIC_URL = '/static/'
 

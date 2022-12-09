@@ -19,9 +19,6 @@ DEBUG_TOOLBAR_CONFIG = {
     'INTERCEPT_REDIRECTS': False,
 }
 
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-
 # mail config
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 EMAIL_HOST = env.str("EMAIL_HOST", "")
@@ -33,7 +30,7 @@ DEFAULT_FROM_EMAIL = env.str("DEFAULT_FROM_EMAIL", "")
 
 
 # Generate raw query in console
-
+"""
 LOGGING = {
     'version': 1,
     'filters': {
@@ -55,4 +52,5 @@ LOGGING = {
         }
     }
 }
+"""
 
