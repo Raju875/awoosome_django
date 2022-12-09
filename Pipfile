@@ -14,6 +14,11 @@ django-debug-toolbar = "*"
 django-extensions = "*"
 werkzeug = "*"
 pyopenssl = "*"
+gunicorn = "*"
+dj-database-url = "*"
+whitenoise = "*"
+django-heroku = "*"
+decouple = "*"
 
 [dev-packages]
 
